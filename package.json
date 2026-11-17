@@ -1,0 +1,13 @@
+{
+  "name": "bot-ventas-whatsapp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bot de ventas para WhatsApp (Cloud API + Gemini) con panel de administración en Netlify",
+  "scripts": {
+    "test": "node tests/engine.test.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
