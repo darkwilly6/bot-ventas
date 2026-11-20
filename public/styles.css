@@ -160,7 +160,7 @@ td input, td select { padding: 5px 7px; }
 .notif { padding: 12px 14px; border-bottom: 1px solid var(--line); cursor: pointer; }
 .notif.unread { background: var(--accent-soft); }
 .notif .t { font-weight: 700; }
-.notif .b { white-space: pre-wrap; color: var(--muted); font-size: 12.5px; max-height: 5.5em; overflow: hidden; }
+.notif .b { white-space: pre-wrap; color: var(--muted); font-size: 12.5px; word-break: break-word; }
 .modal { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: grid; place-items: center; z-index: 40; padding: 16px; }
 .modal-box { background: var(--panel); border-radius: var(--radius); width: min(760px, 100%); max-height: calc(100vh - 32px); overflow: auto; padding: 20px; }
 .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #111; color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 50; max-width: 90%; }
