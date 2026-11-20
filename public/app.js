@@ -730,6 +730,7 @@ function viewConfig() {
       ${fld("connections.geminiKey", "Gemini · API key (gratis en aistudio.google.com)", { type: "password" })}
       <div class="grid cols-2" style="gap:10px">${fld("connections.geminiModel", "Modelo principal")}${fld("connections.geminiFallbackModel", "Modelo de respaldo")}</div>
       ${fld("connections.groqKey", "Groq · API key (opcional, respaldo gratis)", { type: "password" })}
+      ${fld("connections.groqModel", "Groq · modelo (respaldo)", { ph: "openai/gpt-oss-120b" })}
       ${fld("connections.resendKey", "Resend · API key (opcional, avisos por correo)", { type: "password" })}
       <div class="row" style="margin-top:10px"><button class="btn small" id="testAi">🧠 Probar IA</button><button class="btn small" id="testWa">📲 Enviarme mensaje de prueba</button></div>
     </div>
