@@ -134,7 +134,8 @@ export async function geminiJSON({ key, model, system, contents, schema, timeout
 
 async function groqJSON({ key, model, system, history, userText, timeoutMs = 7000 }) {
   const messages = [{ role: "system", content: system + "\n\nResponde ÚNICAMENTE con un objeto JSON con las claves: reply, buttons, show_list, cart_add, cart_remove, cart_clear, customer, wants_checkout, payment_method, send_images, needs_human, human_reason." }];
-  for (const m of history) {
+  // Plan gratis de Groq: límite por solicitud. Se envía solo lo reciente.
+  for (const m of history.slice(-6)) {
     const role = m.from === "customer" ? "user" : "assistant";
     let content = m.text || "";
     if (m.buttons?.length) content += `\n[Botones: ${m.buttons.join(" | ")}]`;
@@ -144,7 +145,7 @@ async function groqJSON({ key, model, system, history, userText, timeoutMs = 700
   const r = await fetchWithTimeout("https://api.groq.com/openai/v1/chat/completions", {
     method: "POST",
     headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
-    body: JSON.stringify({ model, messages, temperature: 0.5, response_format: { type: "json_object" } }),
+    body: JSON.stringify({ model, messages, temperature: 0.5, max_completion_tokens: 1024, response_format: { type: "json_object" } }),
   }, timeoutMs);
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(`Groq ${r.status}: ${j?.error?.message || "error"}`);
